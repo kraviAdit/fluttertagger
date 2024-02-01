@@ -133,7 +133,7 @@ class _FlutterTaggerState extends State<FlutterTagger> {
   late double _width = 0;
   late bool _hideOverlay = true;
   OverlayEntry? _overlayEntry;
-  late final OverlayState _overlayState = Overlay.of(context);
+  late final OverlayState? _overlayState = Overlay.of(context);
 
   ///Formats tag text to include id
   String _formatTagText(String id, String tag, String triggerCharacter) {
@@ -178,7 +178,7 @@ class _FlutterTaggerState extends State<FlutterTagger> {
 
           _computeSize();
           _overlayEntry = _createOverlay();
-          _overlayState.insert(_overlayEntry!);
+          _overlayState?.insert(_overlayEntry!);
 
           widget.animationController?.forward();
         }
@@ -194,7 +194,7 @@ class _FlutterTaggerState extends State<FlutterTagger> {
       _overlayEntry?.remove();
       _overlayEntry = null;
     }
-    _overlayState.setState(() {});
+    _overlayState?.setState(() {});
   }
 
   ///Creates an overlay to show search result
